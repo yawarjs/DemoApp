@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Complaint>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Complaints</h1>
+@if (ViewBag.Success != null) {
+<div class="alert alert-success" role="alert">
+    @ViewBag.Success
+</div>
+}
+@if (ViewBag.Failure != null) {
+<div class="alert alert-danger" role="alert">
+    @ViewBag.Failure
+</div>
+}
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ComplaintId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComplaintTypeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComplaineeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactDetails)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsResolved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timestamp)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComplaintId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComplaintType.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComplaineeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactDetails)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComplaintStatus.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsResolved)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Timestamp)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
